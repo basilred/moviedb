@@ -47,7 +47,7 @@ class App extends React.Component {
             {this.state.data.map(item => (
               <li key={item.code}>
                 {item.description}{' '}
-                <span dangerouslySetInnerHTML={{__html: item.symbol}} />
+                <span className="sign" dangerouslySetInnerHTML={{__html: item.symbol}} />
                 {item.rate_float.toFixed(2)}
               </li>
             ))}

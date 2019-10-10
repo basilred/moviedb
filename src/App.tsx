@@ -3,11 +3,38 @@ import './App.css';
 
 import axios from 'axios';
 
+interface ICurrency {
+  code: string;
+  description: string;
+  rate: string;
+  rate_float: number;
+  symbol: string;
+};
+
 class App extends React.Component {
+  state: { data: ICurrency[] };
+
+  constructor(props: Readonly<{}>) {
+    super(props);
+    this.state = {
+      data: []
+    }
+  }
+
   componentDidMount() {
     axios.get('https://api.coindesk.com/v1/bpi/currentprice.json')
       .then(response => {
-        console.log(response.data);
+        const { bpi } = response.data;
+        const result = [];
+
+        for (const item in bpi) {
+          if (bpi.hasOwnProperty(item)) {
+            const element = bpi[item];
+            result.push(element);
+          }
+        }
+
+        this.setState({ data: result });
       });
   }
 

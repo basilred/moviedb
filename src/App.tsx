@@ -42,17 +42,16 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <h1>Bitcoin</h1>
+          <ul>
+            {this.state.data.map(item => (
+              <li key={item.code}>
+                {item.description}{' '}
+                <span dangerouslySetInnerHTML={{__html: item.symbol}} />
+                {item.rate_float.toFixed(2)}
+              </li>
+            ))}
+          </ul>
         </header>
       </div>
     );

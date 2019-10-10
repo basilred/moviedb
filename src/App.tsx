@@ -2,14 +2,8 @@ import React from 'react';
 import './App.css';
 
 import axios from 'axios';
-
-interface ICurrency {
-  code: string;
-  description: string;
-  rate: string;
-  rate_float: number;
-  symbol: string;
-};
+import ICurrency from './interfaces/ICurrency';
+import CurrencyList from './components/CurrencyList';
 
 class App extends React.Component {
   state: { data: ICurrency[] };
@@ -43,15 +37,7 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <h1>Bitcoin</h1>
-          <ul>
-            {this.state.data.map(item => (
-              <li key={item.code}>
-                {item.description}{' '}
-                <span className="sign" dangerouslySetInnerHTML={{__html: item.symbol}} />
-                {item.rate_float.toFixed(2)}
-              </li>
-            ))}
-          </ul>
+          <CurrencyList list={this.state.data} />
         </header>
       </div>
     );

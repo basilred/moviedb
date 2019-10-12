@@ -1,5 +1,6 @@
 import React from 'react';
 import ICurrency from '../../interfaces/ICurrency';
+import './CurrencyList.css';
 
 const CurrencyList = ({ list }: { list: ICurrency[] }) => {
   return (

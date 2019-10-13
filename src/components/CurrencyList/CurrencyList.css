@@ -2,3 +2,11 @@
   list-style: none;
   padding-left: 0;
 }
+
+.CurrencyList__item {
+  color: lightgreen;
+}
+
+.CurrencyList__value {
+  color: whitesmoke;
+}

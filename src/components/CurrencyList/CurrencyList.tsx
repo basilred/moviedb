@@ -4,10 +4,12 @@ import './CurrencyList.css';
 
 const CurrencyItem = ({ item }: { item: ICurrency }) => {
   return (
-    <li>
+    <li className="CurrencyList__item">
       {item.description}{' '}
-      <span className="sign" dangerouslySetInnerHTML={{ __html: item.symbol }} />
-      {item.rate_float.toFixed(2)}
+      <span className="CurrencyList__value">
+        <span className="CurrencyList__sign" dangerouslySetInnerHTML={{ __html: item.symbol }} />
+        {item.rate_float.toFixed(2)}
+      </span>
     </li>
   );
 };

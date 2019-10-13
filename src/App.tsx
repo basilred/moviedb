@@ -51,8 +51,8 @@ class App extends React.Component {
   }
 
   render() {
-    const {loading, errored} = this.state;
-    const bitcoinBlock = loading ? <p>Loading…</p> : <CurrencyList list={this.state.data} />;
+    const {loading, errored, data} = this.state;
+    const bitcoinBlock = loading ? <p>Loading…</p> : <CurrencyList list={data} />;
     const errorMsg = <p>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>;
 
     return (

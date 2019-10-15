@@ -26,7 +26,7 @@ class App extends React.Component {
   componentDidMount() {
     axios.get('https://api.coindesk.com/v1/bpi/currentprice.json')
       .then(response => {
-        this.setState({ data: this.toCurrencyArray(response.data.bpi) });
+        this.setState({ data: Object.values(response.data.bpi) });
       })
       .catch(err => {
         console.log(err);
@@ -35,19 +35,6 @@ class App extends React.Component {
       .finally(() => {
         this.setState({ loading: false });
       });
-  }
-
-  toCurrencyArray(bpi: any) {
-    const result = [];
-
-    for (const item in bpi) {
-      if (bpi.hasOwnProperty(item)) {
-        const element = bpi[item];
-        result.push(element);
-      }
-    }
-
-    return result;
   }
 
   render() {
